@@ -1,7 +1,7 @@
 #Intro
 Example project to accompany the blog on Kafka consumer traps and pitfalls
 
-#Usage
+Usage
 
 To run the project:
 ```

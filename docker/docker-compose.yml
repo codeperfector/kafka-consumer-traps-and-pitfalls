@@ -20,24 +20,14 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
-      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093
+      - KAFKA_CFG_LISTENERS=CLIENT://:9093,EXTERNAL://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9093,EXTERNAL://localhost:9092
       - KAFKA_INTER_BROKER_LISTENER_NAME=CLIENT
+      - KAFKA_CFG_NUM_PARTITIONS=10
     ports:
-      - "9093:9093"
+      - "9092:9092"
     depends_on:
       - zookeeper
-  app:
-    build:
-      context: ../
-      dockerfile: docker/Dockerfile
-    image: kafka-consumer-test-app
-    networks:
-      - app-tier
-    volumes:
-      - ${PWD}/logs:/logs
-    depends_on:
-      - kafka
 networks:
   app-tier:
     driver: bridge

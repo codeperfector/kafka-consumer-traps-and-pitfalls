@@ -1,4 +1,20 @@
 kafka:
+  topics:
+  - "topic1"
+  - "topic2"
   consumer:
-    bootstrap-servers: "localhost:9092"
-    group-id: "myconsumer"
+    bootstrap.servers: "localhost:9092"
+    group.id: "myconsumer"
+    auto.offset.reset: "earliest"
+    enable.auto.commit: false
+    max.poll.records: 10
+  producer:
+    bootstrap.servers: "localhost:9092"
+    acks: "all"
+    max.in.flight.requests.per.connection: 1
+    batch.size: 16384
+    client.id: "myproducer"
+    linger.ms: 100
+
+
+
