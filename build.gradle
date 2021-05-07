@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 	id "io.freefair.lombok" version "5.1.0"
+	id 'org.jetbrains.kotlin.jvm' version '1.5.0-RC'
 }
 
 group = 'com.codeperfector.examples'
@@ -19,8 +20,20 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+	implementation "io.github.microutils:kotlin-logging-jvm:2.0.6"
 }
 
 test {
 	useJUnitPlatform()
+}
+compileKotlin {
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
+}
+compileTestKotlin {
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
 }

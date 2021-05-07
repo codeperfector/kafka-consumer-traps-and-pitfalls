@@ -1,3 +1,4 @@
+
 kafka:
   topics:
   - "topic1"
@@ -15,6 +16,6 @@ kafka:
     batch.size: 16384
     client.id: "myproducer"
     linger.ms: 100
-
-
-
+logging:
+  level:
+    org.apache.kafka.clients.consumer.internals.AbstractCoordinator: debug
